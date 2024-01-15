@@ -1,0 +1,133 @@
+@local=http://localhost:3900
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAzMjgzYTYwMDYxMmY2NjA4ZGVhMDkiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2OTQ3MDYwNzF9.eitqynE0SJKJkizBeDAFoO8O2sDYUhAh1vAmjt2QyFM
+@tokenRegular=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBmM2M4N2RhNjY1MGNmZThmOTJlZTAiLCJpc0J1c2luZXNzIjpmYWxzZSwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY5NTc0MjczM30.LcOcYphxKtoH0oCAvcIZ2Gpn6814kIK3bN9TANhAh-E
+@tokenBiz=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBmM2M4OGRhNjY1MGNmZThmOTJlZTQiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjk1NTAwNjM4fQ.r9p7y6yudeCMzsC_ftMwX3wP1VEho1KSkTMOwvlJ1C0
+@tokenAdmin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE0NDFkNjI5OTVkODU0YmQ2NmZhY2QiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDUyNjg0ODR9.N-H3TcWu1NQOk-B1GW-H5hSajx2ONhoeQ1quOoXICUQ
+
+@JhonToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE0MDEwMGFiYjc5NDRjMDUwYjllOGYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA1MjUzODU2fQ.Q9e_99zv2UK_gEZ7ItojdOlpB56_KXJs4dsPJklOuxU
+
+### Authenticate (login)
+POST {{local}}/users/auth
+Content-Type: application/json
+
+{
+  "email": "israel_israeli@gmail.com",
+  "password": "Aa123456&"
+}
+
+### Create New User
+POST {{local}}/users
+Content-Type: application/json
+
+{
+    "name":{"first":"Jim",
+    "last":"Carrey"},
+    "phone":"0526094755",
+    "email":"Jim_Carrey@gmail.com",
+    "password":"Aa123456&"
+}
+
+
+### Get all users
+GET {{local}}/users/
+x-auth-token: {{tokenAdmin}}
+
+
+### Get user by id
+GET {{local}}/users/65a40100abb7944c050b9e8f
+x-auth-token:{{tokenAdmin}}
+
+
+### Edit user
+PUT {{local}}/users/65a40100abb7944c050b9e8f
+Content-Type: application/json
+x-auth-token: {{tokenAdmin}}
+
+{
+    "name":"Jhon Wick",
+    "phone":"0529999999",
+    "email":"john_wick@gmail.com",
+    "password":"Aa123456&"
+}
+
+
+
+### Delete user
+DELETE {{local}}/users/659afe5f473fe219df5d982e
+x-auth-token: {{tokenAdmin}}
+
+
+
+// Product //
+
+### Create new Product
+POST {{local}}/products
+x-auth-token: {{tokenAdmin}}
+Content-Type: application/json
+
+{
+    "category":"My Card category",
+    "title":"My Card Title",
+    "price":5,
+    "description":"My Card description"
+}
+
+### Get all Products
+GET {{local}}/products
+x-auth-token: {{tokenAdmin}}
+
+
+### Get Product by id
+GET {{local}}/products/659d2138557b766bfc09129c
+x-auth-token:{{JhonToken}}
+Content-Type: application/json
+
+
+### Get Product search
+GET {{local}}/products/search/g
+Content-Type: application/json
+
+### Get Products Filters
+GET {{local}}/products/filter/Bakery
+Content-Type: application/json
+
+
+### Edit Product
+PUT {{local}}/products/659b0281473fe219df5d98c7
+x-auth-token: {{tokenAdmin}}
+Content-Type: application/json
+
+{   
+     "category":"My Card category",
+    "title":"My Card Title",
+    "price":5717,
+    "description":"My Card description"
+}
+
+
+### Delete Product
+DELETE {{local}}/products/659affb4473fe219df5d983f
+x-auth-token: {{tokenAdmin}}
+
+// Cart //
+
+### Add to cart 
+PATCH {{local}}/cart/updateCart
+x-auth-token: {{JhonToken}}
+Content-Type: application/json
+
+{
+    "_id":"65a41e8f9aa7799a619e92a9","amount":0
+}
+
+
+
+### Get all products cart 
+GET {{local}}/cart
+x-auth-token:{{tokenAdmin}}
+Content-Type: application/json
+
+
+
+
+
