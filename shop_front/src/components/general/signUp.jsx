@@ -1,11 +1,11 @@
-import Input from "./common/input";
-import PageHeader from "./common/pageHeader";
+import Input from "../common/input";
 import { useFormik } from "formik";
 import Joi from "joi";
-import { formikValidateUsingJoi } from "../utils/formikValidateUsingJoi";
+import { toast } from "react-toastify";
+import { formikValidateUsingJoi } from "../../utils/formikValidateUsingJoi";
 import { useNavigate, Navigate } from "react-router-dom";
 import { useState } from "react";
-import { useStore } from "../context/store.context";
+import { useStore } from "../../context/store.context";
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -47,6 +47,15 @@ const SignUp = () => {
       try {
         await createUser(values);
         await login({ email: values.email, password: values.password });
+        toast.success("you Registered / Logged in Successfully", {
+          bodyClassName:
+            "Toastify__toast-container .Toastify__toast-body Toastify__progress-bar",
+          position: "top-center",
+          closeButton: true,
+          autoClose: 2000,
+          hideProgressBar: false,
+          toastId: "signedInToast",
+        });
         navigate("/");
       } catch ({ response }) {
         if (response && response.status === 400) {
@@ -62,10 +71,8 @@ const SignUp = () => {
 
   return (
     <>
-      <PageHeader title="Sign Up " description="open a new account" />
-
       <form
-        className="col-12 col-sm-6"
+        className="col-9 col-sm-6 signUpForm"
         onSubmit={form.handleSubmit}
         noValidate
         style={{ margin: "auto" }}
@@ -93,11 +100,11 @@ const SignUp = () => {
           error={form.touched.name && form.errors.name}
         />
 
-        <div className="my-2 d-flex">
+        <div className="my-2 d-flex justify-content-center">
           <button
             type="submit"
             disabled={!form.isValid}
-            className="btn btn-primary ms-auto"
+            className="btn btn-primary"
           >
             Sign Up
           </button>

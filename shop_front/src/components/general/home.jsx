@@ -1,6 +1,6 @@
-import { useStore } from "../context/store.context";
-import Product from "./product";
-import PageHeader from "./common/pageHeader";
+import { useStore } from "../../context/store.context";
+import Product from "../cart/product";
+import PageHeader from "../common/pageHeader";
 import { Link } from "react-router-dom";
 
 const Home = () => {
@@ -8,18 +8,8 @@ const Home = () => {
 
   return (
     <>
-      <PageHeader
-        title={
-          <>
-            M&N <i className="bi bi-basket me-2"></i>
-            Market
-            <span>&copy;</span>
-          </>
-        }
-        description="Shall we start shopping?"
-      />
       {user?.isAdmin && (
-        <div className="col-12 text-center mb-3">
+        <div className="divBtnCreate my-5">
           <Link className="btn btn-success" to="/create-product">
             create a new product
           </Link>

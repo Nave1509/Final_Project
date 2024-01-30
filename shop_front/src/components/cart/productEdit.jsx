@@ -2,13 +2,13 @@ import { useFormik } from "formik";
 import Joi from "joi";
 import { useEffect, useState } from "react";
 import { useNavigate, useParams, Link } from "react-router-dom";
-import { formikValidateUsingJoi } from "../utils/formikValidateUsingJoi";
-import Input from "./common/input";
-import PageHeader from "./common/pageHeader";
-import { useProducts } from "../hooks/useProduct";
+import { formikValidateUsingJoi } from "../../utils/formikValidateUsingJoi";
+import Input from "../common/input";
+import PageHeader from "../common/pageHeader";
+import { useProducts } from "../../hooks/useProduct";
 import { toast } from "react-toastify";
 
-import { useStore } from "../context/store.context";
+import { useStore } from "../../context/store.context";
 
 const ProductsEdit = () => {
   const [error, setError] = useState("");
@@ -18,16 +18,6 @@ const ProductsEdit = () => {
   const { id } = useParams();
   const product = useProducts(id);
 
-  // const form = useFormik({
-  //   validateOnMount: true,
-  //   initialValues: {
-  //     category: "",
-  //     title: "",
-  //     description: "",
-  //     price: "",
-  //     image: "",
-  //   },
-
   const form = useFormik({
     validateOnMount: true,
     initialValues: {
@@ -35,21 +25,10 @@ const ProductsEdit = () => {
       title: "",
       description: "",
       price: "",
+      productAccordingTo: "",
       imageUrl: "",
       imageAlt: "",
     },
-
-    // validate: formikValidateUsingJoi({
-    //   category: Joi.string().min(2).max(400).required().label("category"),
-    //   title: Joi.string().min(2).max(255).required().label("title"),
-    //   description: Joi.string()
-    //     .min(2)
-    //     .max(1024)
-    //     .required()
-    //     .label("Description"),
-    //   price: Joi.number().min(0).max(1024).required().label("price"),
-    //   image: Joi.string().min(11).max(1024).allow("").label("Image"),
-    // }),
 
     validate: formikValidateUsingJoi({
       category: Joi.string().min(2).max(400).required().label("category"),
@@ -60,6 +39,10 @@ const ProductsEdit = () => {
         .required()
         .label("Description"),
       price: Joi.number().min(0).max(1024).required().label("price"),
+      productAccordingTo: Joi.string()
+        .min(2)
+        .max(255)
+        .label("product according to"),
       imageUrl: Joi.string().min(11).max(1024).allow("").label("Image Url"),
       imageAlt: Joi.string().min(6).max(255).allow("").label("Image alt"),
     }),
@@ -71,6 +54,7 @@ const ProductsEdit = () => {
           "category": values.category,
           "description": values.description,
           "price": values.price,
+          "productAccordingTo": values.productAccordingTo,
           "image": { "alt": values.imageAlt, "url": values.imageUrl },
         });
         toast("Product Updated Successfully 👏👏");
@@ -81,58 +65,34 @@ const ProductsEdit = () => {
         }
       }
     },
-
-    // async onSubmit(values) {
-    //   try {
-    //     await editProduct(id, {
-    //       ...values,
-    //       "image": { "url": values.image || "", "alt": values.title || "" },
-    //     });
-    //     toast("Product Updated Successfully 👏👏");
-    //     navigate("/");
-    //   } catch ({ response }) {
-    //     if (response && response.status === 400) {
-    //       setError(response.data);
-    //     }
-    //   }
-    // },
   });
 
   useEffect(() => {
     if (!product) return;
-    const { category, title, description, price } = product;
+    const { category, title, description, price, productAccordingTo } = product;
     const imageUrl = product.image.url;
     const imageAlt = product.image.alt;
 
-    form.setValues({ category, title, description, price, imageUrl, imageAlt });
+    form.setValues({
+      category,
+      title,
+      description,
+      price,
+      productAccordingTo,
+      imageUrl,
+      imageAlt,
+    });
   }, [product]);
-
-  // useEffect(() => {
-  //   if (!product) return;
-  //   const { title, description, category, price } = product;
-  //   const imageUrl = product.image.url;
-  //   const imageAlt = product.image.alt;
-
-  //   form.setValues({
-  //     title,
-  //     description,
-  //     category,
-  //     price,
-  //     imageUrl,
-  //     imageAlt,
-  //   });
-  // }, [product]);
 
   return (
     <>
       <PageHeader
-        title={product?.title}
-        description="Start editing a product quickly and easily"
-      />
-      <p className=" fs-5 textInfo text-center">Enter information here</p>
+        title="Edit Product"
+        description="Enter information here"
+      ></PageHeader>
 
       <form
-        className="col-12 col-sm-6 mx-auto"
+        className="col-9 col-sm-6 mx-auto"
         onSubmit={form.handleSubmit}
         noValidate
       >
@@ -166,12 +126,16 @@ const ProductsEdit = () => {
           required
           error={form.touched.price && form.errors.price}
         />
-        {/* <Input
-          {...form.getFieldProps("image")}
+
+        <Input
+          {...form.getFieldProps("productAccordingTo")}
           type="text"
-          label="Image"
-          error={form.touched.image && form.errors.image}
-        /> */}
+          label="product according to (KG / Units)"
+          required
+          error={
+            form.touched.productAccordingTo && form.errors.productAccordingTo
+          }
+        />
 
         <Input
           {...form.getFieldProps("imageUrl")}
@@ -186,15 +150,11 @@ const ProductsEdit = () => {
           error={form.touched.imageAlt && form.errors.imageAlt}
         />
 
-        <div className="my-2 d-flex">
-          <Link to={`/`} className="card-link btn btn-primary pb-1">
-            <i className="bi bi-arrow-left-circle"></i>
-          </Link>
-
+        <div className="my-2 d-flex justify-content-center">
           <button
             type="submit"
             disabled={!form.isValid}
-            className="btn btn-primary ms-auto"
+            className="btn btn-primary"
           >
             Save Changes
           </button>

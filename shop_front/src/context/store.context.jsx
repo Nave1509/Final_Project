@@ -25,7 +25,6 @@ export const storeContext = createContext({
   searchProducts: fn_error_context_must_be_used,
   filterProducts: fn_error_context_must_be_used,
   getProducts: fn_error_context_must_be_used,
-  // clearTheCart: fn_error_context_must_be_used,
 });
 storeContext.displayName = "store";
 
@@ -34,7 +33,6 @@ export const StoreProvider = ({ children }) => {
   const [products, setProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [cartStatus, setCartStatus] = useState(false);
-  const [clearCart, setClearCart] = useState(false);
   const refreshUser = () => setUser();
 
   useEffect(() => {
@@ -42,7 +40,6 @@ export const StoreProvider = ({ children }) => {
       getUser();
       async function getUser() {
         const me = await userService.getMe(localStorage.getItem("token"));
-        console.log(me.data.cart);
         setUser(me.data);
         setCartProducts(me.data.cart);
       }
@@ -55,14 +52,12 @@ export const StoreProvider = ({ children }) => {
 
   useEffect(() => {
     if (user) {
-      console.log("get cart");
       getCartProducts();
     }
   }, [user]);
 
   async function getCartProducts() {
     const myCartProducts = await cartProductService.getAll();
-    console.log(myCartProducts);
     if (myCartProducts.data && myCartProducts.data.length > 0) {
       setCartProducts(myCartProducts.data[0].cart);
     } else {
@@ -121,10 +116,6 @@ export const StoreProvider = ({ children }) => {
     await getCartProducts();
   };
 
-  // const clearTheCart = () => {
-  //   setCartProducts([]);
-  // };
-
   return (
     <storeContext.Provider
       value={{
@@ -145,7 +136,6 @@ export const StoreProvider = ({ children }) => {
         searchProducts,
         filterProducts,
         getProducts,
-        // clearTheCart,
       }}
     >
       {children}

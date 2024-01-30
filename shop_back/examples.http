@@ -2,7 +2,7 @@
 @token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTAzMjgzYTYwMDYxMmY2NjA4ZGVhMDkiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE2OTQ3MDYwNzF9.eitqynE0SJKJkizBeDAFoO8O2sDYUhAh1vAmjt2QyFM
 @tokenRegular=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBmM2M4N2RhNjY1MGNmZThmOTJlZTAiLCJpc0J1c2luZXNzIjpmYWxzZSwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTY5NTc0MjczM30.LcOcYphxKtoH0oCAvcIZ2Gpn6814kIK3bN9TANhAh-E
 @tokenBiz=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTBmM2M4OGRhNjY1MGNmZThmOTJlZTQiLCJpc0J1c2luZXNzIjp0cnVlLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNjk1NTAwNjM4fQ.r9p7y6yudeCMzsC_ftMwX3wP1VEho1KSkTMOwvlJ1C0
-@tokenAdmin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE0NDFkNjI5OTVkODU0YmQ2NmZhY2QiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDUyNjg0ODR9.N-H3TcWu1NQOk-B1GW-H5hSajx2ONhoeQ1quOoXICUQ
+@tokenAdmin=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWIxN2FiZWRhY2NhZjRjZDM3NzcyODIiLCJpc0FkbWluIjp0cnVlLCJpYXQiOjE3MDY1MjgxMzh9.paHsQqL79uB8UdEDrJRB4EF2ryhhwNfXrydebcYUHCo
 
 @JhonToken=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NWE0MDEwMGFiYjc5NDRjMDUwYjllOGYiLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzA1MjUzODU2fQ.Q9e_99zv2UK_gEZ7ItojdOlpB56_KXJs4dsPJklOuxU
 
@@ -28,9 +28,15 @@ Content-Type: application/json
 }
 
 
-### Get all users
+### Get Users
 GET {{local}}/users/
 x-auth-token: {{tokenAdmin}}
+
+
+### Get Logged-In User / Me
+GET {{local}}/users/me
+x-auth-token: {{tokenAdmin}}
+
 
 
 ### Get user by id

@@ -1,0 +1,27 @@
+html[data-bs-theme="light"] #signOut {
+  background-color: #f44336;
+}
+
+#signOut {
+  width: 100%;
+  background-color: rgb(201, 137, 19);
+  color: white !important;
+}
+
+#signedInToast {
+  background-color: rgb(40, 201, 19);
+  color: #ffffff !important;
+}
+.Toastify__progress-bar--success {
+  background: white !important;
+}
+
+.Toastify__toast-icon {
+  display: none;
+}
+.Toastify__toast-body > div:last-child {
+  word-break: break-word;
+  flex: 1 1;
+  display: flex;
+  justify-content: center;
+}

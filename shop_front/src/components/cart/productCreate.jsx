@@ -2,10 +2,10 @@ import { useFormik } from "formik";
 import Joi from "joi";
 import { useState } from "react";
 import { useNavigate, Link } from "react-router-dom";
-import { formikValidateUsingJoi } from "../utils/formikValidateUsingJoi";
-import Input from "./common/input";
-import PageHeader from "./common/pageHeader";
-import { useStore } from "../context/store.context";
+import { formikValidateUsingJoi } from "../../utils/formikValidateUsingJoi";
+import Input from "../common/input";
+import PageHeader from "../common/pageHeader";
+import { useStore } from "../../context/store.context";
 import { toast } from "react-toastify";
 
 const ProductsCreate = () => {
@@ -20,6 +20,7 @@ const ProductsCreate = () => {
       title: "",
       description: "",
       price: "",
+      productAccordingTo: "",
       imageUrl: "",
       imageAlt: "",
     },
@@ -31,8 +32,13 @@ const ProductsCreate = () => {
         .max(1024)
         .required()
         .label("description"),
-
       price: Joi.number().min(0).required().label("price"),
+      productAccordingTo: Joi.string()
+        .required()
+        .valid("KG", "Units")
+        .min(2)
+        .max(255)
+        .label("product according to"),
       imageUrl: Joi.string().min(11).max(1024).allow("").label("Image url"),
       imageAlt: Joi.string().min(6).max(255).allow("").label("Image alt"),
     }),
@@ -44,6 +50,7 @@ const ProductsCreate = () => {
           "title": values.title,
           "description": values.description,
           "price": values.price,
+          "productAccordingTo": values.productAccordingTo,
           "image": {
             "url": values.imageUrl || "",
             "alt": values.imageAlt || "",
@@ -63,12 +70,11 @@ const ProductsCreate = () => {
     <>
       <PageHeader
         title="Create Product"
-        description="Start creating a product quickly and easily"
-      />
-      <p className="fs-5 textInfo text-center">Enter information here</p>
+        description="Enter information here"
+      ></PageHeader>
 
       <form
-        className="col-12 col-sm-6 mx-auto"
+        className="col-9 col-sm-6 mx-auto"
         onSubmit={form.handleSubmit}
         noValidate
       >
@@ -104,6 +110,16 @@ const ProductsCreate = () => {
         />
 
         <Input
+          {...form.getFieldProps("productAccordingTo")}
+          type="text"
+          label="product according to (KG / Units)"
+          required
+          error={
+            form.touched.productAccordingTo && form.errors.productAccordingTo
+          }
+        />
+
+        <Input
           {...form.getFieldProps("imageUrl")}
           type="text"
           label="imageUrl"
@@ -116,14 +132,11 @@ const ProductsCreate = () => {
           error={form.touched.imageAlt && form.errors.imageAlt}
         />
 
-        <div className="my-2 d-flex">
-          <Link to={`/`} className="card-link btn btn-primary pb-1">
-            <i className="bi bi-arrow-left-circle"></i>
-          </Link>
+        <div className="my-2 d-flex justify-content-center">
           <button
             type="submit"
             disabled={!form.isValid}
-            className="btn btn-primary ms-auto"
+            className="btn btn-primary my-2"
           >
             Create Product
           </button>

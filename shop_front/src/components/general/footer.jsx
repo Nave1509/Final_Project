@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import { useStore } from "../context/store.context";
+import { useStore } from "../../context/store.context";
 
 const Footer = () => {
   const { user } = useStore();

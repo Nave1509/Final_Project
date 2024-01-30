@@ -1,0 +1,124 @@
+html[data-bs-theme="light"] #headerTop {
+  background-color: #c2424230;
+}
+html[data-bs-theme="dark"] #theUser .dropdown li {
+  color: white;
+}
+html[data-bs-theme="light"] #noLoginP ul {
+  color: black;
+}
+html[data-bs-theme="dark"] .title {
+  color: wheat;
+}
+
+html[data-bs-theme="dark"] #headerBottom {
+  background-color: #2b2f33;
+}
+html[data-bs-theme="dark"] #mainMenuUL button {
+  color: #ffffff;
+}
+html[data-bs-theme="light"] #mainMenuUL button {
+  color: #000000;
+}
+html[data-bs-theme="dark"] #mainMenuUL button:hover {
+  color: wheat;
+}
+html[data-bs-theme="light"] #mainMenuUL button:hover {
+  color: rgb(201, 137, 19);
+}
+
+#theUserOption {
+  margin-bottom: -10px;
+  margin-top: 10px;
+}
+#noLoginP ul {
+  display: flex;
+  gap: 10px;
+  color: white;
+}
+
+.bi-person-fill {
+  color: #d2c80cca;
+  border-radius: 50%;
+  border: 1px solid;
+  background-color: white;
+  padding: 7px 9px 2px;
+}
+
+#userImage {
+  width: 35px;
+  height: 35px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.dropdown-toggle {
+  background-color: transparent;
+}
+
+#theUser .dropdown-menu {
+  width: 200px;
+}
+
+#theUser i.userIcon {
+  font-size: 20px;
+  padding: 0 5px 0 0;
+  border: none;
+}
+
+#theUser .dropdown .dropdown-item {
+  text-align: center;
+  padding: 0;
+}
+
+#userSignOut {
+  color: red;
+}
+
+#theUserName {
+  border: none;
+}
+
+#theUser .dropdown li {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.nav-item {
+  list-style-type: none;
+}
+
+#userOptions {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+.navbar-nav {
+  display: flex;
+  justify-content: center;
+}
+
+#mainMenu {
+  justify-content: center;
+}
+#mainMenuUL {
+  width: 100%;
+  justify-content: space-around;
+}
+#mainMenu button:hover {
+  color: wheat;
+}
+#mainMenu button:hover {
+  color: wheat;
+}
+html[data-bs-theme="dark"] #backToStore {
+  background-color: #198754;
+  color: white;
+}
+html[data-bs-theme="dark"] #backToStore:hover {
+  color: #198754;
+  background-color: white;
+}

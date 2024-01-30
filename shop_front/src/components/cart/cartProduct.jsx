@@ -1,8 +1,16 @@
-import { useStore } from "../context/store.context";
+import { useStore } from "../../context/store.context";
 
 const CartProduct = ({ product }) => {
   const { updateCart, getCartProducts } = useStore();
 
+  const formatter = new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+  });
+
+  const totalPrice = Number(product.amount) * Number(product.product.price);
+  const formattedTotalPrice = formatter.format(totalPrice);
   return (
     <div className="cartProduct">
       <div className="cartProductInner">
@@ -17,9 +25,10 @@ const CartProduct = ({ product }) => {
             {":"}
           </span>
         </h4>
+
         <span className="cartProductPrice">
-          {product.amount}KG*{product.product.price}$=
-          {Number(product.amount) * Number(product.product.price)}$
+          {product.amount}KG*{formatter.format(product.product.price)}$=
+          {formattedTotalPrice}
         </span>
       </div>
 

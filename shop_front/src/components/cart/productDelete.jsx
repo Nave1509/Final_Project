@@ -1,10 +1,10 @@
 import { useEffect } from "react";
-import { Navigate, useNavigate, useParams } from "react-router-dom";
-import productService from "../services/productService";
-import { useStore } from "../context/store.context";
+import { useNavigate, useParams } from "react-router-dom";
+import productService from "../../services/productService";
+import { useStore } from "../../context/store.context";
 import { toast } from "react-toastify";
 
-const ProductsDelete = () => {
+const ProductDelete = () => {
   const navigate = useNavigate();
   const { id } = useParams();
   const { deleteProducts } = useStore();
@@ -21,4 +21,4 @@ const ProductsDelete = () => {
 
   return null;
 };
-export default ProductsDelete;
+export default ProductDelete;

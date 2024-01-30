@@ -1,11 +1,11 @@
 import { useFormik } from "formik";
 import Joi from "joi";
+import { toast } from "react-toastify";
 import { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
-import { formikValidateUsingJoi } from "../utils/formikValidateUsingJoi";
-import Input from "./common/input";
-import PageHeader from "./common/pageHeader";
-import { useStore } from "../context/store.context";
+import { formikValidateUsingJoi } from "../../utils/formikValidateUsingJoi";
+import Input from "../common/input";
+import { useStore } from "../../context/store.context";
 
 const SignIn = ({ redirect = "/" }) => {
   const [error, setError] = useState("");
@@ -32,6 +32,13 @@ const SignIn = ({ redirect = "/" }) => {
     async onSubmit(values) {
       try {
         await login(values);
+        toast.success("you Registered / Logged in Successfully", {
+          position: "top-center",
+          closeButton: true,
+          autoClose: 2000,
+          hideProgressBar: false,
+          toastId: "signedInToast",
+        });
         navigate(redirect);
       } catch ({ response }) {
         if (response && response.status === 400) {
@@ -47,10 +54,8 @@ const SignIn = ({ redirect = "/" }) => {
 
   return (
     <>
-      <PageHeader title="Sign In " description="Sign in to your account" />
-
       <form
-        className="col-12 col-sm-6"
+        className="col-9 col-sm-6 signInForm"
         onSubmit={form.handleSubmit}
         noValidate
         style={{ margin: "auto" }}
@@ -71,11 +76,11 @@ const SignIn = ({ redirect = "/" }) => {
           error={form.touched.password && form.errors.password}
         />
 
-        <div className="my-2 d-flex">
+        <div className="my-2 d-flex justify-content-center">
           <button
             type="submit"
             disabled={!form.isValid}
-            className="btn btn-primary  ms-auto"
+            className="btn btn-primary"
           >
             Sign In
           </button>

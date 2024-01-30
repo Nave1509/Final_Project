@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import { useStore } from "../context/store.context";
+import { useStore } from "../../context/store.context";
 
-const Product = ({ product: { _id, title, image, price, description } }) => {
+const Product = ({
+  product: { _id, title, image, price, productAccordingTo, description },
+}) => {
   const [amount, setAmount] = useState(0);
   const [isDisabled, setIsDisabled] = useState(true);
   const { user, updateCart, getCartProducts, cartStatus, setCartStatus } =
@@ -23,10 +25,7 @@ const Product = ({ product: { _id, title, image, price, description } }) => {
   };
 
   return (
-    <div
-      className="product"
-      style={{ width: "18rem", margin: "6px", boxShadow: "  0 0 10px 0" }}
-    >
+    <div className="product">
       <img
         style={{ height: "250px", objectFit: "cover" }}
         src={image.url}
@@ -36,7 +35,9 @@ const Product = ({ product: { _id, title, image, price, description } }) => {
       <div className="card-body">
         <h4 className="card-title">{title}</h4>
         <p className="card-text">{description}</p>
-        <p className="product-price">Price: {price}</p>
+        <p className="product-price">
+          Price: {price}$ for 1 {productAccordingTo}
+        </p>
         <p>
           <span style={{ "marginRight": "5px" }}>Amount:</span>
           <input

@@ -1,9 +1,8 @@
 const PageHeader = ({ title, description }) => {
   return (
-    <div className="col-12 col-sm-6 mt-4 mx-auto text-center">
-      <h1 className="my-2">{title}</h1>
-
-      {description && <p> {description}</p>}
+    <div className="pageHeaderDiv fs-5 textInfo text-center mt-4">
+      <h5 className="mb-3">{title}</h5>
+      <p>{description}</p>
     </div>
   );
 };

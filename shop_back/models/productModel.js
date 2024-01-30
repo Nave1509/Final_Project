@@ -20,6 +20,12 @@ const productSchema = new mongoose.Schema({
     required: true,
     min: 0,
   },
+  productAccordingTo: {
+    type: String,
+    required: true,
+    minlength: 2,
+    maxlength: 255,
+  },
   description: {
     type: String,
     required: true,
@@ -50,6 +56,11 @@ function validateProduct(product) {
     title: Joi.string().min(2).max(255).required(),
     category: Joi.string().min(2).max(255).required(),
     price: Joi.number().min(0).required(),
+    productAccordingTo: Joi.string()
+      .min(2)
+      .max(255)
+      .required()
+      .valid("KG", "Units"),
     description: Joi.string().min(2).max(1024).required(),
     image: Joi.object({
       url: Joi.string().min(11).max(1024).allow(null, ""),

@@ -8,7 +8,19 @@ const usersData = [
     "image": {
       "url":
         "https://sm.ign.com/t/ign_il/screenshot/default/john-wick4_2zhc.1024.jpg",
-      "alt": "Jhon Wick",
+      "alt": "Jhon Wick picture",
+    },
+  },
+  {
+    "name": "Jim Carrey",
+    "phone": "0509797797",
+    "email": "jim_carrey@gmail.com",
+    "password": "Aa123456&",
+    "isAdmin": false,
+    "image": {
+      "url":
+        "https://cdn.britannica.com/84/200584-050-7EC3F3F6/Jim-Carrey-2012.jpg?w=400&h=300&c=crop",
+      "alt": "Jim Carrey picture",
     },
   },
   {
@@ -17,14 +29,24 @@ const usersData = [
     "email": "israel_israeli@gmail.com",
     "password": "Aa123456&",
     "isAdmin": true,
+    "image": {
+      "url":
+        "https://images.pexels.com/photos/769772/pexels-photo-769772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "alt": "Israel israeli picture",
+    },
   },
 
   {
     "name": "Jane Doe",
-    "phone": "0502222222",
+    "phone": "0502555555",
     "email": "jane_doe@gmail.com",
     "password": "Aa123456&",
     "isAdmin": false,
+    "image": {
+      "url":
+        "https://upload.wikimedia.org/wikipedia/commons/thumb/0/03/Dunwoody_Gen_Ann_USArmy_2008-11-14-1226691530.jpg/640px-Dunwoody_Gen_Ann_USArmy_2008-11-14-1226691530.jpg",
+      "alt": "ane Doe picture",
+    },
   },
 ];
 
@@ -32,7 +54,8 @@ const productsData = [
   {
     "category": "Fruits and Vegetables",
     "title": "Tomato",
-    "price": 5.9,
+    "price": 3,
+    "productAccordingTo": "KG",
     "description": "Tomatoes produced in the country",
     "image": {
       "url":
@@ -43,7 +66,8 @@ const productsData = [
   {
     "category": "Fruits and Vegetables",
     "title": "Cucumbers",
-    "price": 4.9,
+    "price": 4,
+    "productAccordingTo": "KG",
     "description": "Fresh green cucumbers",
     "image": {
       "url":
@@ -54,7 +78,8 @@ const productsData = [
   {
     "category": "Meats",
     "title": "Angus",
-    "price": 95,
+    "price": 80,
+    "productAccordingTo": "KG",
     "description": "Butchers slice number 8",
     "image": {
       "url":
@@ -65,7 +90,8 @@ const productsData = [
   {
     "category": "Fishs",
     "title": "Fresh salmon",
-    "price": 120,
+    "price": 70,
+    "productAccordingTo": "KG",
     "description": "Fresh cut salmon fillet",
     "image": {
       "url":
@@ -77,6 +103,7 @@ const productsData = [
     "category": "wine and alcohol",
     "title": "Semi-dry Merlot",
     "price": 250,
+    "productAccordingTo": "Units",
     "description": " semi-dry Merlot wine in the 2014 vintage",
     "image": {
       "url":
@@ -87,7 +114,8 @@ const productsData = [
   {
     "category": "Dairy",
     "title": "Yellow cheese",
-    "price": 12,
+    "price": 15,
+    "productAccordingTo": "KG",
     "description": "Philadelphia yellow cheese 38%",
     "image": {
       "url":
@@ -98,7 +126,8 @@ const productsData = [
   {
     "category": "Bakery",
     "title": "Whole grain bread",
-    "price": 25,
+    "price": 8,
+    "productAccordingTo": "Units",
     "description": "100% whole grain bread",
     "image": {
       "url":
@@ -109,7 +138,8 @@ const productsData = [
   {
     "category": "Dairy",
     "title": "Brown eggs",
-    "price": 18,
+    "price": 10,
+    "productAccordingTo": "Pack",
     "description": "6 Brown organic eggs",
     "image": {
       "url":
@@ -120,7 +150,8 @@ const productsData = [
   {
     "category": "Bakery",
     "title": "Chocolate donut",
-    "price": 25,
+    "price": 20,
+    "productAccordingTo": "Pack",
     "description": "6 Chocolate donut",
     "image": {
       "url":
@@ -131,7 +162,8 @@ const productsData = [
   {
     "category": "Fish",
     "title": "Mackerel fish",
-    "price": 35,
+    "price": 60,
+    "productAccordingTo": "Pack",
     "description": "5 Mackerel fish",
     "image": {
       "url":
@@ -142,7 +174,8 @@ const productsData = [
   {
     "category": "Dairy",
     "title": "melted cheese",
-    "price": 22,
+    "price": 14,
+    "productAccordingTo": "KG",
     "description": "pieces of melted cheese 38%",
     "image": {
       "url":
@@ -153,7 +186,8 @@ const productsData = [
   {
     "category": "Meats",
     "title": "Steak",
-    "price": 38,
+    "price": 100,
+    "productAccordingTo": "KG",
     "description": "Red Meat Steak",
     "image": {
       "url":
@@ -164,7 +198,8 @@ const productsData = [
   {
     "category": "Fruits and Vegetables",
     "title": "Apple",
-    "price": 3.5,
+    "price": 4,
+    "productAccordingTo": "KG",
     "description": "Fresh and juicy apples",
     "image": {
       "url":
@@ -175,7 +210,8 @@ const productsData = [
   {
     "category": "Fruits and Vegetables",
     "title": "Banana",
-    "price": 2.9,
+    "price": 5,
+    "productAccordingTo": "KG",
     "description": "Sweet and nutritious bananas",
     "image": {
       "url":
@@ -186,7 +222,8 @@ const productsData = [
   {
     "category": "Fruits and Vegetables",
     "title": "Carrot",
-    "price": 1.8,
+    "price": 6,
+    "productAccordingTo": "KG",
     "description": "Fresh and crunchy carrots",
     "image": {
       "url":
@@ -197,7 +234,8 @@ const productsData = [
   {
     "category": "Fruits and Vegetables",
     "title": "Strawberries",
-    "price": 6.5,
+    "price": 15,
+    "productAccordingTo": "KG",
     "description": "Plump and juicy strawberries",
     "image": {
       "url":
@@ -208,7 +246,8 @@ const productsData = [
   {
     "category": "Fruits and Vegetables",
     "title": "Spinach",
-    "price": 2.2,
+    "price": 9,
+    "productAccordingTo": "KG",
     "description": "Healthy and nutritious spinach leaves",
     "image": {
       "url":
@@ -219,12 +258,25 @@ const productsData = [
   {
     "category": "Fruits and Vegetables",
     "title": "Watermelon",
-    "price": 8.9,
+    "price": 14,
+    "productAccordingTo": "KG",
     "description": "Sweet and refreshing watermelon slices",
     "image": {
       "url":
         "https://images.pexels.com/photos/5946081/pexels-photo-5946081.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       "alt": "Slices of watermelon",
+    },
+  },
+  {
+    "category": "Candys",
+    "title": "Chocolate",
+    "price": 8,
+    "productAccordingTo": "Units",
+    "description": "Sweet Chocolate",
+    "image": {
+      "url":
+        "https://images.pexels.com/photos/4791265/pexels-photo-4791265.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "alt": "Chocolate bar",
     },
   },
 ];

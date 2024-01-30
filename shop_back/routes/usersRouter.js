@@ -30,7 +30,7 @@ userRouter.post("/", async (req, res) => {
   res.json(user);
 });
 
-// login
+// Login / Sign In
 userRouter.post("/auth", async (req, res) => {
   //validate input
   const { error } = validate(req.body);

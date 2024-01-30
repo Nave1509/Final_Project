@@ -1,0 +1,129 @@
+html[data-bs-theme="dark"] #cartDiv {
+  background-color: #3d3d3d;
+}
+
+html[data-bs-theme="light"] #cartDiv {
+  background-color: rgb(255, 255, 255);
+}
+html[data-bs-theme="light"] .btn-secondary {
+  background-color: white;
+  color: black;
+  border: 1px solid;
+}
+html[data-bs-theme="light"] #cartTotal {
+  color: black;
+}
+html[data-bs-theme="dark"] #cartTotal {
+  color: rgb(201, 137, 19);
+}
+#theCart {
+  width: 7%;
+  display: flex;
+  gap: 5px;
+}
+.btn.btn-secondary {
+  width: 44px;
+  height: 44px;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 10px;
+}
+.btn.btn-secondary:hover {
+  box-shadow: 0 0 10px 0 wheat;
+  background-color: transparent;
+}
+#cartAmount {
+  position: absolute;
+  border: 1px solid black;
+  border-radius: 50%;
+  display: inline-block;
+  top: -10px;
+  right: -10px;
+  width: 20px;
+  height: 20px;
+  background-color: #ffffff80;
+  color: black;
+  text-align: center;
+  font-size: 14px;
+  line-height: 20px;
+}
+#cartDropDown {
+  top: 64px;
+  right: -12px;
+  padding: 10px;
+  box-shadow: 0 0 10px 0;
+  width: 385px;
+  left: initial;
+}
+
+#cartDropDown h3 {
+  text-align: center;
+}
+
+.bi.bi-cart {
+  font-size: 20px;
+  line-height: 27px;
+}
+
+.cartProduct {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  letter-spacing: 0.8px;
+  font-size: 16px;
+  border: 1px solid #ffffff30;
+  border-width: 1px 0 1px 0;
+  padding: 5px 0;
+}
+.cartProductInner {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  letter-spacing: 0.8px;
+  font-size: 16px;
+}
+
+.cartProduct img {
+  width: 38px;
+  height: 38px;
+  object-fit: cover;
+  border: 1px solid black;
+  border-radius: 25%;
+}
+
+.cartProduct .cardProductTitle {
+  margin: 3px 5px 0;
+  text-align: left;
+  font-size: 16px;
+}
+
+.cartProduct .cartProductPrice {
+  margin: 0 5px;
+  padding-top: 3px;
+  font-size: 16px;
+}
+
+.cartProductDelete {
+  width: 38px;
+  height: 38px;
+  border-radius: 25%;
+  padding: 5px;
+}
+.bi.bi-trash.btn.btn-danger {
+  padding: 5px;
+}
+
+#cartTotal {
+  text-align: left;
+  border-top: 1px solid black;
+  font-size: 18px;
+  font-weight: 600;
+  padding-top: 10px;
+  margin-top: 10px;
+  color: wheat;
+  display: flex;
+  justify-content: space-between;
+}

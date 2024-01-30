@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProductById } from "../services/productService";
+import { getProductById } from "../../services/productService";
 import { Link } from "react-router-dom";
 
 const ProductView = () => {
@@ -39,12 +39,10 @@ const ProductView = () => {
               {product.description}
             </div>
 
-            <div className="text-center my-2">
-              <span className=" fw-bold me-2">Price:</span> {product.price}
+            <div className="text-center my-4">
+              <span className=" fw-bold me-2">Price:</span> {product.price}$ for
+              1 {product.productAccordingTo}
             </div>
-            <Link to={`/`} className="card-link btn btn-primary pb-1">
-              <i className="bi bi-arrow-left-circle"></i>
-            </Link>
           </div>
         </div>
       )}
